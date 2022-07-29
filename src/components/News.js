@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Newsitem from "./Newsitem";
+import Spinner from "./Spinner";
 
 export default class News extends Component {
   constructor() {
@@ -8,19 +9,19 @@ export default class News extends Component {
       articles: [],
       loading: false,
       page:1,
-      pageSize:20
+      // pageSize:20
     }
     
   }
 
   async componentDidMount() {
     console.log("cdm");
-    let url =
-      `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=df3b31e044564987b6855d6d5654757c&page=1&pageSize=${this.state.pageSize}`;
+    let url = `${this.props.api}&page=1&pageSize=${this.props.pageSize}`;
+    this.setState({loading:true});
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log(parsedData);
-    this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults });
+    this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading:false });
 
   }
 
@@ -29,7 +30,8 @@ export default class News extends Component {
 
     
     let url =
-    `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=df3b31e044564987b6855d6d5654757c&page=${this.state.page -1}&pageSize=${this.state.pageSize}`;
+    `${this.props.api}&page=${this.state.page -1}&pageSize=${this.props.pageSize}`;
+    this.setState({loading:true});
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log(parsedData);
@@ -38,30 +40,33 @@ export default class News extends Component {
 
     this.setState({
       page: this.state.page-1,
-      articles: parsedData.articles      
+      articles: parsedData.articles,   
+      loading: false
     })
 
   }
 
   handleNextClick = async () =>{
     console.log("next");
-    if(this.state.page+1>Math.ceil(this.state.totalResults/this.state.pageSize)){        // also you can use this in next button disable = ---
-        console.log("kaam ho gaya");
-    }else{
+    // if(this.state.page+1>Math.ceil(this.state.totalResults/this.state.pageSize)){        // also you can use this in next button disable = ---
+    //     console.log("kaam ho gaya");
+    // }else{
     let url =
-    `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=df3b31e044564987b6855d6d5654757c&page=${this.state.page + 1}&pageSize=${this.state.pageSize}`;
+    `${this.props.api}&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+    this.setState({loading:true});
     let data = await fetch(url);
     let parsedData = await data.json();
-    console.log(parsedData);
+    
   
 
 
     this.setState({
       page:this.state.page+1,
-      articles: parsedData.articles      
+      articles: parsedData.articles,  
+      loading: false    
     })
 
-  }
+  // }
   }
 
   render() {
@@ -69,8 +74,9 @@ export default class News extends Component {
       <>
         <div className="container my-8 mx-auto">
           <h1 className="text-3xl font-bold">CodeMonkey - Top Headlines</h1>
+          {this.state.loading && <Spinner/>}
           <div className="grid grid-cols-3 grid-flow-row gap-4 my-8">
-            {this.state.articles.map((element) => {
+            {!this.state.loading && this.state.articles.map((element) => {
               return (
                 <Newsitem
                   key={element.url}
@@ -107,7 +113,7 @@ export default class News extends Component {
           </button>
 
           <button
-            // disabled={this.state.page<=1}
+            disabled={this.state.page+1>Math.ceil(this.state.totalResults/this.props.pageSize)}
             onClick={this.handleNextClick}
             type="button"
             className="text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
