@@ -7,7 +7,8 @@ export default class News extends Component {
     this.state = {
       articles: [],
       loading: false,
-      page:1
+      page:1,
+      pageSize:20
     }
     
   }
@@ -15,11 +16,11 @@ export default class News extends Component {
   async componentDidMount() {
     console.log("cdm");
     let url =
-      "https://newsapi.org/v2/everything?q=tesla&from=2022-06-29&sortBy=publishedAt&apiKey=ec581fd0a644428d8bc71d7b8b5b5d4a&page=1";
+      `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=df3b31e044564987b6855d6d5654757c&page=1&pageSize=${this.state.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log(parsedData);
-    this.setState({ articles: parsedData.articles });
+    this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults });
 
   }
 
@@ -28,7 +29,7 @@ export default class News extends Component {
 
     
     let url =
-    `https://newsapi.org/v2/everything?q=tesla&from=2022-06-29&sortBy=publishedAt&apiKey=ec581fd0a644428d8bc71d7b8b5b5d4a&page=${this.state.page -1}`;
+    `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=df3b31e044564987b6855d6d5654757c&page=${this.state.page -1}&pageSize=${this.state.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log(parsedData);
@@ -44,9 +45,11 @@ export default class News extends Component {
 
   handleNextClick = async () =>{
     console.log("next");
-
+    if(this.state.page+1>Math.ceil(this.state.totalResults/this.state.pageSize)){        // also you can use this in next button disable = ---
+        console.log("kaam ho gaya");
+    }else{
     let url =
-    `https://newsapi.org/v2/everything?q=tesla&from=2022-06-29&sortBy=publishedAt&apiKey=ec581fd0a644428d8bc71d7b8b5b5d4a&page=${this.state.page + 1}`;
+    `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=df3b31e044564987b6855d6d5654757c&page=${this.state.page + 1}&pageSize=${this.state.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     console.log(parsedData);
@@ -58,7 +61,7 @@ export default class News extends Component {
       articles: parsedData.articles      
     })
 
-    
+  }
   }
 
   render() {
