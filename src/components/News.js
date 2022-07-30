@@ -73,9 +73,10 @@ export default class News extends Component {
     return (
       <>
         <div className="container my-8 mx-auto">
-          <h1 className="text-3xl font-bold">CodeMonkey - Top Headlines</h1>
           {this.state.loading && <Spinner/>}
-          <div className="grid grid-cols-3 grid-flow-row gap-4 my-8">
+          <h1 className="text-4xl font-bold text-center">CodeMonkey - Top Headlines</h1>
+          {/* <div className="grid grid-cols-3 grid-flow-row my-8"> */}
+          <div className="flex flex-wrap my-8 mx-auto justify-center">
             {!this.state.loading && this.state.articles.map((element) => {
               return (
                 <Newsitem
@@ -87,7 +88,8 @@ export default class News extends Component {
                 />
               );
             })}
-          </div>
+            </div>
+          {/* </div> */}
           
             <div className="foobtn flex justify-between">
             <button

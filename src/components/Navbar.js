@@ -1,4 +1,11 @@
 import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 export default class Navbar extends Component {
   render() {
@@ -11,8 +18,14 @@ export default class Navbar extends Component {
               <span className="ml-3 text-xl">NewsMonkey</span>
             </a>
             <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-              <a className="mr-5 hover:text-gray-900">Home</a>
-              <a className="mr-5 hover:text-gray-900">About</a>
+              <Link className="mr-5 hover:text-gray-900" to="/">Home</Link>
+              <Link className="mr-5 hover:text-gray-900" to="/about">About</Link>
+              <Link className="mr-5 hover:text-gray-900" to="/business">Business</Link>
+              <Link className="mr-5 hover:text-gray-900" to="/entertainment">Entertainment</Link>
+              <Link className="mr-5 hover:text-gray-900" to="/health">Health</Link>
+              <Link className="mr-5 hover:text-gray-900" to="/science">Science</Link>
+              <Link className="mr-5 hover:text-gray-900" to="/sports">Sports</Link>
+              <Link className="mr-5 hover:text-gray-900" to="/technology">Technology</Link>
               
             </nav>
             {/* <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">

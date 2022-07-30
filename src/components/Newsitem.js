@@ -9,7 +9,7 @@ export default class Newsitem extends Component {
     let {title, description, imageUrl, newsUrl} = this.props;
 
     return (
-      <div>
+      <div className='flex justify-center m-10'>
 
             <div className="max-w-sm rounded overflow-hidden shadow-lg">
             <img className="w-full" src={!imageUrl?"https://images.wsj.net/im-591376/social":imageUrl} alt="Sunset in the mountains"/>
@@ -20,7 +20,7 @@ export default class Newsitem extends Component {
             </p>
             </div>
             <div className="px-6 pt-4 pb-2">
-            <a  href={newsUrl} className='text-blue-500'>Read more...</a>
+            <a  href={newsUrl} className='text-blue-500 '>Read more...</a>
             </div>
             </div>
 
