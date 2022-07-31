@@ -85,13 +85,16 @@ export default class News extends Component {
                   description={element.description ? element.description : ""}
                   imageUrl={element.urlToImage}
                   newsUrl={element.url}
+                  author = {element.author}
+                  date = {element.publishedAt}
+                  source = {element.source.name}
                 />
               );
             })}
             </div>
           {/* </div> */}
           
-            <div className="foobtn flex justify-between">
+            <div className="foobtn flex justify-between m-12">
             <button
             onClick={this.handlePrevClick}
             type="button"
