@@ -3,8 +3,8 @@
 ## Sample Images - 
 
 <!-- [alt text](./Capture.png) -->
-<!-- [alt text](./Capture2.png) -->
-<img src="./Capture.png">
+[alt text](/Capture2.png)
+<img src="/Capture.png">
 
 ## Available Scripts
 
