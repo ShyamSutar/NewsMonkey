@@ -4,8 +4,13 @@
 
 <!-- [alt text](./Capture.png) -->
 <!-- [alt text](./src/Capture2.PNG) -->
-<img src="https://github.com/ShyamSutar/NewsMonkey/blob/main/src/Capture2.PNG">
-<img src="https://github.com/ShyamSutar/NewsMonkey/blob/main/src/Capture.PNG">
+
+<p align="center" width="100%">
+    <img src="https://github.com/ShyamSutar/NewsMonkey/blob/main/src/Capture.PNG">
+</p>
+<p align="center" width="100%">
+    <img src="https://github.com/ShyamSutar/NewsMonkey/blob/main/src/Capture2.PNG" >
+</p>
 
 ## Available Scripts
 
