@@ -3,8 +3,9 @@
 ## Sample Images - 
 
 <!-- [alt text](./Capture.png) -->
-[alt text](./src/Capture2.PNG)
-<img src="/Capture.PNG">
+<!-- [alt text](./src/Capture2.PNG) -->
+<img src="https://github.com/ShyamSutar/NewsMonkey/blob/main/src/Capture2.PNG">
+<img src="https://github.com/ShyamSutar/NewsMonkey/blob/main/src/Capture.PNG">
 
 ## Available Scripts
 
