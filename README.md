@@ -2,8 +2,8 @@
 
 ## Sample Images - 
 
-[alt text](./src/Capture.png)
-[alt text](http://url/to/img.png)
+[alt text](./Capture.png)
+[alt text](./Capture2.png)
 
 ## Available Scripts
 
