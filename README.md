@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# CodeMonkey
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Sample Images - 
+
+[alt text](./src/Capture.png)
+[alt text](http://url/to/img.png)
 
 ## Available Scripts
 

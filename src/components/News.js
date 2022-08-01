@@ -97,7 +97,7 @@ export default class News extends Component {
       <>
         <div className="container my-8 mx-auto">
           {this.state.loading && <Spinner/>}
-          <h1 className="text-4xl font-bold text-center">CodeMonkey - Top Headlines</h1>
+          <h1 className="text-4xl font-bold text-center">CodeMonkey - Top Headlines from {this.capitalizeFirstLetter(this.props.category)} </h1>
           {/* <div className="grid grid-cols-3 grid-flow-row my-8"> */}
           <div className="flex flex-wrap my-8 mx-auto justify-center">
             {!this.state.loading && this.state.articles.map((element) => {
