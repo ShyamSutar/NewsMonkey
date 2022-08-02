@@ -12,10 +12,7 @@ const News = (props) => {
   const [totalResults, setTotalResults] = useState(0)
 
 
-//   document.title = `${this.capitalizeFirstLetter(
-//     props.category
-//   )} - NewsMonkey`;
-// }
+
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -43,6 +40,10 @@ const News = (props) => {
   }
 
   useEffect(() => {
+
+    document.title = `${capitalizeFirstLetter(props.category)} - NewsMonkey`;
+  
+
     updateNews();
   }, [])
   
@@ -71,11 +72,11 @@ const News = (props) => {
 
   const fetchMoreData = async () => {
     // this.setState({page: this.state.page+1})
-    setPage(page+1);
     // this.updateNews();
 
 
-    const url = `${props.api}&page=${page}`;
+    const url = `${props.api}&page=${page+1}`;
+    setPage(page+1);
     // this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
