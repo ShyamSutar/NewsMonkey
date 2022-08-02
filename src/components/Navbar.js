@@ -7,8 +7,8 @@ import {
   Link
 } from "react-router-dom";
 
-export default class Navbar extends Component {
-  render() {
+const Navbar = () => {
+  
     return (
       <div>
         <header className="text-gray-600 body-font">
@@ -46,5 +46,7 @@ export default class Navbar extends Component {
         </header>
       </div>
     );
-  }
+  
 }
+
+export default Navbar
