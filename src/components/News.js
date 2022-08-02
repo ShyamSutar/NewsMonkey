@@ -23,17 +23,21 @@ export default class News extends Component {
     )} - NewsMonkey`;
   }
 
-  async updateNews(pageNo) {
+  async updateNews() {
+    this.props.setProgress(10);
     const url = `${this.props.api}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
+    this.props.setProgress(30);
     let parsedData = await data.json();
+    this.props.setProgress(70);
     console.log(parsedData);
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false,
     });
+    this.props.setProgress(100);
   }
 
   async componentDidMount() {
@@ -110,6 +114,7 @@ export default class News extends Component {
   render() {
     return (
       <>
+     
         <div className="container my-8 mx-auto">
           {this.state.loading && <Spinner/>}
           <h1 className="text-4xl font-bold text-center">
